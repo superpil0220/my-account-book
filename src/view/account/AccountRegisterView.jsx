@@ -121,11 +121,11 @@ function AccountRegisterView() {
   }, []);
 
   async function onSaveToNotion() {
-    console.log("On Save To Notion 3");
+    console.log("On Save To Notion 5");
 
     // alert("개발 진행주주중~")
     const axiosBuilder = axios.create({
-      baseURL: 'https://superpil0220.github.io/notion',
+      baseURL: 'https://cors-anywhere.herokuapp.com/https://api.notion.com/v1',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer secret_Qe9377fMj8GjcIrBi4cVj0YxYOLNP1ki3cABkUrdr93',
@@ -139,7 +139,10 @@ function AccountRegisterView() {
     axiosBuilder.get("/databases/2052b9e7d6a24bca91489bc49e114fe4").then(
         (response) => {
           console.log("response", response);
-        })
+          alert("정상작동!!!!!!!")
+        }).catch((error) => {
+      alert("실패!!!!!!!!")
+    })
   }
 
   function onReset() {
