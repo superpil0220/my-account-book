@@ -124,13 +124,18 @@ function AccountRegisterView() {
     console.log("On Save To Notion");
     // alert("개발 진행주주중~")
     const axiosBuilder = axios.create({
-      baseURL: '/notion',
+      // baseURL: '/notion',
+      baseURL: 'https://api.notion.com/v1',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer secret_Qe9377fMj8GjcIrBi4cVj0YxYOLNP1ki3cABkUrdr93',
         'Notion-Version': '2022-06-28'
       }
     })
+
+    // https://superpil0220.github.io/notion/databases/2052b9e7d6a24bca91489bc49e114fe4
+    // http://localhost:3000/notion/databases/2052b9e7d6a24bca91489bc49e114fe4
+
     axiosBuilder.get("/databases/2052b9e7d6a24bca91489bc49e114fe4").then(
         (response) => {
           console.log("response", response);
