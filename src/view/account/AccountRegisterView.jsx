@@ -1,5 +1,5 @@
 import * as XLSX from "xlsx";
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCalendar, faRedo, faSave} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
@@ -12,120 +12,119 @@ function AccountRegisterView() {
   const fileInputRef = useRef(null);
 
   // todo: 개발 완료 후 삭제
-  // useEffect(() => {
-  //   setIsUploadFile(true)
-  //   setAccountData({
-  //     "searchDate": "2024.08.11 - 2024.09.11",
-  //     "data": [
-  //       {
-  //         "date": "2024.08.11 14:53:20",
-  //         "type": "출금",
-  //         "transfer": "-178,000",
-  //         "balance": "57,597",
-  //         "transferType": "일반이체",
-  //         "contents": "김경필",
-  //         "memo": ""
-  //       },
-  //       {
-  //         "date": "2024.08.17 13:14:31",
-  //         "type": "입금",
-  //         "transfer": "2,115,092",
-  //         "balance": "2,172,689",
-  //         "transferType": "일반입금",
-  //         "contents": "김경필",
-  //         "memo": ""
-  //       },
-  //       {
-  //         "date": "2024.08.24 04:27:20",
-  //         "type": "입금",
-  //         "transfer": "49",
-  //         "balance": "2,172,738",
-  //         "transferType": "예금이자",
-  //         "contents": "입출금통장 이자",
-  //         "memo": ""
-  //       },
-  //       {
-  //         "date": "2024.08.25 18:23:59",
-  //         "type": "출금",
-  //         "transfer": "-30,000",
-  //         "balance": "2,142,738",
-  //         "transferType": "일반이체",
-  //         "contents": "임세랑",
-  //         "memo": ""
-  //       },
-  //       {
-  //         "date": "2024.08.25 18:41:05",
-  //         "type": "입금",
-  //         "transfer": "130,000",
-  //         "balance": "2,272,738",
-  //         "transferType": "일반입금",
-  //         "contents": "김경필",
-  //         "memo": ""
-  //       },
-  //       {
-  //         "date": "2024.09.08 20:34:28",
-  //         "type": "입금",
-  //         "transfer": "8,400,000",
-  //         "balance": "10,672,738",
-  //         "transferType": "일반입금",
-  //         "contents": "김경필",
-  //         "memo": ""
-  //       },
-  //       {
-  //         "date": "2024.09.08 21:02:06",
-  //         "type": "출금",
-  //         "transfer": "-610,000",
-  //         "balance": "10,062,738",
-  //         "transferType": "일반이체",
-  //         "contents": "김경필",
-  //         "memo": ""
-  //       },
-  //       {
-  //         "date": "2024.09.08 22:25:39",
-  //         "type": "출금",
-  //         "transfer": "-124,000",
-  //         "balance": "9,938,738",
-  //         "transferType": "일반이체",
-  //         "contents": "김경필",
-  //         "memo": ""
-  //       },
-  //       {
-  //         "date": "2024.09.09 21:36:39",
-  //         "type": "출금",
-  //         "transfer": "-5,200,000",
-  //         "balance": "4,738,738",
-  //         "transferType": "일반이체",
-  //         "contents": "임세랑",
-  //         "memo": ""
-  //       },
-  //       {
-  //         "date": "2024.09.09 21:45:01",
-  //         "type": "입금",
-  //         "transfer": "30,000,000",
-  //         "balance": "34,738,738",
-  //         "transferType": "일반입금",
-  //         "contents": "임세랑",
-  //         "memo": ""
-  //       },
-  //       {
-  //         "date": "2024.09.11 13:12:53",
-  //         "type": "출금",
-  //         "transfer": "-400,000",
-  //         "balance": "34,338,738",
-  //         "transferType": "일반이체",
-  //         "contents": "임세랑",
-  //         "memo": "신혼여행 계약금"
-  //       }
-  //     ]
-  //   })
-  // }, []);
+  useEffect(() => {
+    setIsUploadFile(true)
+    setAccountData({
+      "searchDate": "2024.08.11 - 2024.09.11",
+      "data": [
+        {
+          "date": "2024.08.11 14:53:20",
+          "type": "출금",
+          "transfer": "-178,000",
+          "balance": "57,597",
+          "transferType": "일반이체",
+          "contents": "김경필",
+          "memo": ""
+        },
+        {
+          "date": "2024.08.17 13:14:31",
+          "type": "입금",
+          "transfer": "2,115,092",
+          "balance": "2,172,689",
+          "transferType": "일반입금",
+          "contents": "김경필",
+          "memo": ""
+        },
+        {
+          "date": "2024.08.24 04:27:20",
+          "type": "입금",
+          "transfer": "49",
+          "balance": "2,172,738",
+          "transferType": "예금이자",
+          "contents": "입출금통장 이자",
+          "memo": ""
+        },
+        {
+          "date": "2024.08.25 18:23:59",
+          "type": "출금",
+          "transfer": "-30,000",
+          "balance": "2,142,738",
+          "transferType": "일반이체",
+          "contents": "임세랑",
+          "memo": ""
+        },
+        {
+          "date": "2024.08.25 18:41:05",
+          "type": "입금",
+          "transfer": "130,000",
+          "balance": "2,272,738",
+          "transferType": "일반입금",
+          "contents": "김경필",
+          "memo": ""
+        },
+        {
+          "date": "2024.09.08 20:34:28",
+          "type": "입금",
+          "transfer": "8,400,000",
+          "balance": "10,672,738",
+          "transferType": "일반입금",
+          "contents": "김경필",
+          "memo": ""
+        },
+        {
+          "date": "2024.09.08 21:02:06",
+          "type": "출금",
+          "transfer": "-610,000",
+          "balance": "10,062,738",
+          "transferType": "일반이체",
+          "contents": "김경필",
+          "memo": ""
+        },
+        {
+          "date": "2024.09.08 22:25:39",
+          "type": "출금",
+          "transfer": "-124,000",
+          "balance": "9,938,738",
+          "transferType": "일반이체",
+          "contents": "김경필",
+          "memo": ""
+        },
+        {
+          "date": "2024.09.09 21:36:39",
+          "type": "출금",
+          "transfer": "-5,200,000",
+          "balance": "4,738,738",
+          "transferType": "일반이체",
+          "contents": "임세랑",
+          "memo": ""
+        },
+        {
+          "date": "2024.09.09 21:45:01",
+          "type": "입금",
+          "transfer": "30,000,000",
+          "balance": "34,738,738",
+          "transferType": "일반입금",
+          "contents": "임세랑",
+          "memo": ""
+        },
+        {
+          "date": "2024.09.11 13:12:53",
+          "type": "출금",
+          "transfer": "-400,000",
+          "balance": "34,338,738",
+          "transferType": "일반이체",
+          "contents": "임세랑",
+          "memo": "신혼여행 계약금"
+        }
+      ]
+    })
+  }, []);
 
   async function onSaveToNotion() {
-    console.log("On Save To Notion");
+    console.log("On Save To Notion 1");
     // alert("개발 진행주주중~")
     const axiosBuilder = axios.create({
-      // baseURL: '/notion',
-      baseURL: 'https://api.notion.com/v1',
+      baseURL: 'https://superpil0220.github.io/notion',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer secret_Qe9377fMj8GjcIrBi4cVj0YxYOLNP1ki3cABkUrdr93',
