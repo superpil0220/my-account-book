@@ -125,7 +125,7 @@ function AccountRegisterView() {
 
     // alert("개발 진행주주중~")
     const axiosBuilder = axios.create({
-      baseURL: 'https://cors-anywhere.herokuapp.com/https://api.notion.com/v1',
+      baseURL: '/notion',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer secret_Qe9377fMj8GjcIrBi4cVj0YxYOLNP1ki3cABkUrdr93',
