@@ -1,13 +1,8 @@
 import * as XLSX from "xlsx";
-import {useEffect, useRef, useState} from "react";
+import {useRef, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {
-  faCalendar,
-  faCalendarAlt,
-  faRedo, faSave
-} from "@fortawesome/free-solid-svg-icons";
-import {Client} from "@notionhq/client";
-
+import {faCalendar, faRedo, faSave} from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 
 function AccountRegisterView() {
   console.log("AccountRegisterView Start!");
@@ -127,7 +122,19 @@ function AccountRegisterView() {
 
   async function onSaveToNotion() {
     console.log("On Save To Notion");
-    alert("개발 진행주주중~")
+    // alert("개발 진행주주중~")
+    const axiosBuilder = axios.create({
+      baseURL: '/notion',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer secret_Qe9377fMj8GjcIrBi4cVj0YxYOLNP1ki3cABkUrdr93',
+        'Notion-Version': '2022-06-28'
+      }
+    })
+    axiosBuilder.get("/databases/2052b9e7d6a24bca91489bc49e114fe4").then(
+        (response) => {
+          console.log("response", response);
+        })
   }
 
   function onReset() {
@@ -225,13 +232,14 @@ function AccountRegisterView() {
             <span className="text-sm">저장</span>
           </button>
           <button onClick={onReset}>
-            <FontAwesomeIcon icon={faRedo} className="mr-1" />
+            <FontAwesomeIcon icon={faRedo} className="mr-1"/>
             <span className="text-sm">초기화</span>
           </button>
         </div>
       </div>
 
-      <table className="w-full text-center sm:border-separate sm:border-spacing-5">
+      <table
+          className="w-full text-center sm:border-separate sm:border-spacing-5">
         {
           accountData.data.map((item, index) => {
             return (
@@ -239,7 +247,9 @@ function AccountRegisterView() {
                   <tr key={index}>
                     <td>
                       <span
-                          className={` px-1 py-0.5 rounded-md text-xs ${item.type=== '출금' ? 'bg-rose-600 text-rose-200' : 'bg-sky-600 text-sky-200'}`}>{item.type}
+                          className={` px-1 py-0.5 rounded-md text-xs ${item.type
+                          === '출금' ? 'bg-rose-600 text-rose-200'
+                              : 'bg-sky-600 text-sky-200'}`}>{item.type}
                       </span>
                       <p className="text-xs">{item.transferType}</p>
                       <span className="text-xs">{item.date}</span>
@@ -258,7 +268,8 @@ function AccountRegisterView() {
                     </td>
                     <td className="text-xs">
                       <p>메모</p>
-                      <p className="sm:text-sm">{item.memo ? item.memo : '-'}</p>
+                      <p className="sm:text-sm">{item.memo ? item.memo
+                          : '-'}</p>
                     </td>
                   </tr>
                 </>
