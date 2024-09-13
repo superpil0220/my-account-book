@@ -121,7 +121,7 @@ function AccountRegisterView() {
   }, []);
 
   async function onSaveToNotion() {
-    console.log("On Save To Notion 1");
+    console.log("On Save To Notion 2");
     // alert("개발 진행주주중~")
     const axiosBuilder = axios.create({
       baseURL: 'https://superpil0220.github.io/notion',
