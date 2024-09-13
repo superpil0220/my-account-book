@@ -121,7 +121,7 @@ function AccountRegisterView() {
   }, []);
 
   async function onSaveToNotion() {
-    console.log("On Save To Notion 5");
+    console.log("On Save To Notion 6");
 
     // alert("개발 진행주주중~")
     const axiosBuilder = axios.create({
